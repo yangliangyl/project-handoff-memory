@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Handoff Memory"
+  short_description: "Maintain project handoff memory across agents."
+  default_prompt: "Update this project handoff so another agent can continue the work."
