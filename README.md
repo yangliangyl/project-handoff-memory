@@ -48,7 +48,7 @@
 把本仓库放进你的 skills 目录(或软链接过去):
 
 ```bash
-git clone https://github.com/<your-name>/project-handoff-memory.git \
+git clone https://github.com/yangliangyl/project-handoff-memory.git \
   ~/.claude/skills/project-handoff-memory
 ```
 
