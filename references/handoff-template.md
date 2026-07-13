@@ -49,6 +49,9 @@ What is done, what is partially done, and what is not started.
 
 ## Next Steps
 
+<!-- 只写用户明确确认过的事项（用户提出的，或用户认可的 agent 建议）。
+     Agent 自行推断的候选动作不写这里 → 记入 docs/open-questions.md 标「建议·未确认」。 -->
+
 1. Concrete next action.
 2. Concrete next action.
 

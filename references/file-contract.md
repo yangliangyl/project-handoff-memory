@@ -19,9 +19,9 @@ Each memory file is defined by two axes: **responsibility** (what it holds) and 
 | `AGENTS.md` | Sole entry / startup protocol: read order, caliber rules (铁律), pitfalls, **conflict arbitration**, sinking rules. **No business background.** | instruction | current |
 | `CLAUDE.md` | One line `@AGENTS.md` so Claude Code auto-loads the same memory. | pointer | current |
 | `README.md` | Business background: why, evaluation framework, scope, boundaries; **if this project is the home project**, its domain-mechanism knowledge lives here too. | background·stable | reference |
-| `handoff.md` (project root) | Current-state snapshot: one-line status / goal / outputs table / data-source table / **recent decisions & rejections** / next steps / watch-outs. One screen. | state·overwrite | current |
+| `handoff.md` (project root) | Current-state snapshot: one-line status / goal / outputs table / data-source table / **recent decisions & rejections** / next steps (**user-confirmed only**) / watch-outs. One screen. | state·overwrite | current |
 | `docs/progress-log.md` | Chronology; dated entries; tag `[决策]`/`[否决]`. | history·append-only | append-only |
-| `docs/open-questions.md` | Open questions affecting conclusions; strike through when resolved. | todo·live | current |
+| `docs/open-questions.md` | Open questions affecting conclusions; strike through when resolved. Also holds agent-proposed, not-yet-confirmed next actions, tagged 「建议·未确认」. | todo·live | current |
 
 ## Optional, by project type
 

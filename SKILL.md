@@ -1,11 +1,20 @@
 ---
 name: project-handoff-memory
-description: Maintain reusable project handoff memory across Codex, Claude Code, WorkBuddy, and other agents. Scans the whole project tree (not only chat context) and keeps every project on ONE standard structure — AGENTS.md (entry protocol) + CLAUDE.md (one-line @AGENTS.md) + README.md + handoff.md in the project root, with progress-log / 口径与数据源 / evidence / open-questions under docs/; legacy-named handoff files get migrated in, not kept in parallel; ships scripts/check_handoff.py to machine-verify structure compliance. Use when a project is not a quick one-off; when the user asks to "沉淀", "交接", "更新项目记忆", "handoff", "给下一个 agent 留文档", or "收尾"; when switching sessions/agents; after meaningful changes to code, SQL, analysis, content pipelines, skills, project structure, key decisions, data caliber, validation status, or next steps.
+description: Maintain reusable project handoff memory across Codex, Claude Code, WorkBuddy, and other agents. Scans the whole project tree (not only chat context) and keeps every project on ONE standard structure — AGENTS.md (entry protocol) + CLAUDE.md (one-line @AGENTS.md) + README.md + handoff.md in the project root, with progress-log / 口径与数据源 / evidence / open-questions under docs/; legacy-named handoff files get migrated in, not kept in parallel; ships scripts/check_handoff.py to machine-verify structure compliance. Use when a project is not a quick one-off; when the user asks to "沉淀", "交接", "更新项目记忆", "handoff", "给下一个 agent 留文档", or "收尾"; when switching sessions/agents; after meaningful changes to code, SQL, analysis, content pipelines, skills, project structure, key decisions, data caliber, validation status, or next steps. AUTO-TRIGGER (standing rule, 2026-07-13): 每完成一个较大迭代（新增/修改分析口径、评分逻辑、核心结论、脚本结构、重要决策或否决），agent 应把沉淀作为该任务的最后一个步骤主动执行，不等用户提醒；小改动（改错别字、调样式）可以攒到当次会话收尾时一并沉淀。
 ---
 
 # Project Handoff Memory
 
 Preserve project memory in files inside the project, not only in chat. Keep the handoff useful for the next agent: current state, decisions, constraints, changed artifacts, validation, risks, and next steps.
+
+## Auto-trigger: 较大迭代后自动沉淀（用户定调，2026-07-13）
+
+在已有 handoff 结构的项目里，**每完成一个较大迭代，沉淀就是该任务的最后一个步骤**，主动执行、不等用户说"沉淀"：
+
+- 什么算较大迭代：口径/评分逻辑变更、核心结论变化、新增或重构脚本、重要决策或否决、新的数据坑、交付物大版本更新
+- 什么不算：错别字、样式微调、单个数字修正——攒到会话收尾一并沉淀
+- 增量沉淀的最小动作（不必每次全量扫树）：progress-log 追加一条（含 [决策]/[否决] 标记）→ 受影响的 handoff/口径/evidence 段落同步 → 若引入新铁律则更新 AGENTS.md → 有余力跑 check_handoff.py
+- 项目还没有 handoff 结构时，先按下方 Workflow 完整走一遍骨架搭建
 
 ## Workflow
 
@@ -43,6 +52,7 @@ Write concise operational memory, not a meeting transcript.
 - Separate facts, user decisions, agent inferences, and unresolved questions.
 - Preserve source-of-truth paths, file names, SQL/table names, data dates, commands, and validation status exactly.
 - Mark uncertain items as `待核` or `未验证`; do not upgrade guesses into facts.
+- **Next steps are user-confirmed only.** `handoff.md` 的待办事项（Next Steps）只写用户明确确认过的事项：用户自己提出的，或 agent 建议后用户明确认可的。Agent 自行推断的"接下来可以做 X"不得写成待办——要么当场向用户确认，要么作为「建议·未确认」记入 `docs/open-questions.md`。否则下一个 agent 会把猜测当成既定任务直接执行。
 - For active work, make the next step concrete enough that another agent can start without asking the user to restate context.
 - For one-off or archived work, write only a short index note if needed; do not build a heavy memory system.
 - Never include secrets, tokens, cookies, private keys, credentials, or long private/copyrighted source excerpts.

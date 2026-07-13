@@ -7,6 +7,7 @@ Before finalizing a handoff update, check:
 - Both entry files exist and are sourced from one place: `AGENTS.md` holds the full instructions, `CLAUDE.md` is `@AGENTS.md` (or an existing `CLAUDE.md` with that line added). No two full copies to hand-sync.
 - Files use the standard names and locations (`handoff.md` in the project root; `progress-log.md` / `口径与数据源.md` / `evidence.md` / `open-questions.md` under `docs/`). Legacy-named files (交接文档.md, content-bearing claude.md, docs/handoff.md …) were migrated and removed, not kept in parallel; the migration is logged in progress-log.
 - The current state distinguishes completed, pending, and unverified work.
+- Every item under Next Steps was explicitly confirmed with the user (user-stated, or agent-proposed and user-approved). Agent-inferred candidates were moved to `docs/open-questions.md` as 「建议·未确认」, not written as 待办.
 - The handoff names changed files/artifacts explicitly.
 - Analysis projects include data caliber, source tables/files, partitions/time windows, and validation status.
 - If the deliverable is a data report / high-rigor analysis, `docs/evidence.md` exists (conclusion → evidence map: every key number traceable to source + computation + verification) — or its absence was a deliberate, logged choice. Every evidence entry carries the report version/date stamp; reruns append new blocks instead of editing old ones.
